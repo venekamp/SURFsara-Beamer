@@ -1,0 +1,24 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+
+\DeclareOptionBeamer{location}{\PassOptionsToPackage{location=#1}{beamerinnerthemeSURFsara}}
+\ProcessOptionsBeamer
+
+% Setting colors and their names
+\definecolor{SURFsaraGreen}{RGB}{5, 137, 65}
+\colorlet{SURFsaraGreenLight}[RGB]{SURFsaraGreen!80!white}
+\colorlet{SURFsaraGreenLighter}[RGB]{SURFsaraGreen!30!white}
+\colorlet{SURFsaraGreenDark}[RGB]{SURFsaraGreen!80!black}
+
+% Settings
+\useinnertheme{SURFsara}
+\useoutertheme{SURFsara}
+\usecolortheme{SURFsara}
+\usefonttheme{SURFsara}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\mode<all>
