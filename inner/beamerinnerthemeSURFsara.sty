@@ -1,6 +1,7 @@
 \mode<presentation>
 
 \DeclareOptionBeamer{location}{\def\beamer@SURFsara@location{#1}}
+\DeclareOptionBeamer{logo}{\def\beamer@SURFsara@logo{#1}}
 \ProcessOptionsBeamer
 
 % Set the background of the frames
@@ -8,9 +9,9 @@
     \begin{tikzpicture}
         % Don't stray outside the paper dimentions.
         \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
-        % \fill[white, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+        \fill[white!93!black, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
         \ifnum\thepage=1\relax%
-            \fill[color=SURFsaraGreen] (0, 0) rectangle(.18*\the\paperwidth, \the\paperheight);
+            \fill[color=SURFsaraGreen] (0, 0) rectangle(2.9cm, \the\paperheight);
         \fi
         % Use the below background when it is not the title page.
         \ifnum\thepage>1\relax%
@@ -30,27 +31,36 @@
 {
     \vskip3cm%
     \inserttitlegraphic
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.25cm, #1]{title page header}
+    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{title page header}
         \usebeamerfont*{title}\inserttitle
     \end{beamercolorbox}
     \vskip0.1cm%
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.25cm, #1]{title page header}
+    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{title page header}
         \usebeamerfont*{subtitle}\insertsubtitle
     \end{beamercolorbox}
     \vskip0.8cm%
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.25cm, #1]{author}
+    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{author}
         \usebeamerfont*{author}\insertauthor
     \end{beamercolorbox}
     \vskip-0.75ex%
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.25cm, #1]{institute}
+    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{institute}
         \usebeamerfont*{institute}\insertinstitute
     \end{beamercolorbox}
     \vskip1.75cm%
     \begin{beamercolorbox}[wd=16cm, #1]{date}
-        \hskip2.25cm\relax\hfill\usebeamerfont*{date}\insertdate\hfill\null
+        \hskip2.8cm\relax\hfill\usebeamerfont*{date}\insertdate\hfill\null
 
-        \hskip2.25cm\relax\hfill\texttt{\fontseries{m}\selectfont\scriptsize\beamer@SURFsara@location}\hfill\null
+        \ifdefined\beamer@SURFsara@location
+            \hskip2.8cm\relax\hfill\texttt{\fontseries{m}\selectfont\scriptsize\beamer@SURFsara@location}\hfill\null
+        \fi
     \end{beamercolorbox}
+    \vskip6.5mm%
+
+    \ifdefined\beamer@SURFsara@logo
+        \hskip2.8cm\hfill\includegraphics[height=6.5mm]{\beamer@SURFsara@logo}\hfill\null
+    \else
+        \hskip2.8cm\hfill\includegraphics[height=6.5mm]{graphics/logos/SURF_SARA_fc.pdf}\hfill\null
+    \fi
 }
 
 \mode<all>
