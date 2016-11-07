@@ -6,8 +6,8 @@ This beamer template works with both ```lualatex``` and ```xelatex```.
 The SURFsara these supports the following options:
 beamer
 
-1 - location
-2 - logo
+1. location
+2. logo
 
 ### location
 This option is used on the opening page of the presentation and gives the
