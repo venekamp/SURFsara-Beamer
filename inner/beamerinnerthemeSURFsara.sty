@@ -1,8 +1,5 @@
-\mode<presentation>
-
-\DeclareOptionBeamer{location}{\def\beamer@SURFsara@location{#1}}
-\DeclareOptionBeamer{logo}{\def\beamer@SURFsara@logo{#1}}
-\ProcessOptionsBeamer
+\mode
+<presentation>
 
 % Set the background of the frames
 \setbeamertemplate{background}{
@@ -11,56 +8,73 @@
         \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
         \fill[white!93!black, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
         \ifnum\thepage=1\relax%
-            \fill[color=SURFsaraGreen] (0, 0) rectangle(2.9cm, \the\paperheight);
+            \fill[color=SURFsaraGreen] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
         \fi
         % Use the below background when it is not the title page.
         \ifnum\thepage>1\relax%
             % Set a solid bar at the top of the frame which holds the frame title
-            \fill[color=SURFsaraGreen] (0, \the\paperheight - 1.5cm) rectangle(\the\paperwidth, \the\paperheight);
-            % Set a small three coloured bar at the bottom of the frame
-            % Draw the right most first and slightly larger then 1/3 of the paperwidth
-            \filldraw[color=SURFsaraGreenLight] (2*\the\paperwidth/3 - 0.3cm, 0) rectangle(\the\paperwidth, 0.32);
-            \filldraw[color=SURFsaraGreen] (\the\paperwidth/3 - 0.3cm, 0) -- (2*\the\paperwidth/3 - 0.15cm, 0) -- (2*\the\paperwidth/3, 0.16) -- (2*\the\paperwidth/3 - 0.15cm, 0.32) -- (\the\paperwidth/3 - 0.3cm, 0.32) -- (\the\paperwidth/3 - 0.3cm, 0);
-            \filldraw[color=SURFsaraGreenDark] (0, 0) -- (\the\paperwidth/3 - 0.15cm, 0) -- (\the\paperwidth/3, 0.16) -- (\the\paperwidth/3 - 0.15cm, 0.32) -- (0, 0.32) -- (0, 0);
+            \fill[color=SURFsaraGreen] (0, \the\paperheight - 8ex) rectangle(\the\paperwidth, \the\paperheight);
+            % Set a solid bar a the bottom of the frame which hold presentation meta data
+            \fill[color=SURFsaraGreen] (0, 0) rectangle(\the\paperwidth, 1.75ex);
         \fi
     \end{tikzpicture}
 }
 
-% Define where the element of the title page are placed
-\defbeamertemplate*{title page}{SURFsara}[1][]
-{
-    \vskip3cm%
-    \inserttitlegraphic
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{title page header}
-        \usebeamerfont*{title}\inserttitle
-    \end{beamercolorbox}
-    \vskip0.1cm%
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{title page header}
-        \usebeamerfont*{subtitle}\insertsubtitle
-    \end{beamercolorbox}
-    \vskip0.8cm%
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{author}
-        \usebeamerfont*{author}\insertauthor
-    \end{beamercolorbox}
-    \vskip-0.75ex%
-    \begin{beamercolorbox}[wd=12cm, leftskip=2.8cm, #1]{institute}
-        \usebeamerfont*{institute}\insertinstitute
-    \end{beamercolorbox}
-    \vskip1.75cm%
-    \begin{beamercolorbox}[wd=16cm, #1]{date}
-        \hskip2.8cm\relax\hfill\usebeamerfont*{date}\insertdate\hfill\null
-
-        \ifdefined\beamer@SURFsara@location
-            \hskip2.8cm\relax\hfill\texttt{\fontseries{m}\selectfont\scriptsize\beamer@SURFsara@location}\hfill\null
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\pagewidth, ht=5ex, dp=2ex, left, vmode]{frametitle}
+        \ifx\insertframesubtitle\@empty%
+            \hspace{.75em}{\usebeamerfont{frametitle}\usebeamercolor{frametitle}\strut\insertframetitle}
+            \vfill
+            \vspace{.7ex}
+        \else%
+            \vspace*{-4ex}\hspace{.75em}{\usebeamerfont{frametitle}\usebeamercolor{frametitle}\strut\insertframetitle}
+            \par\hspace{.75em}{\usebeamerfont{framesubtitle}\usebeamercolor{framesubtitle}\strut\insertframesubtitle}
         \fi
     \end{beamercolorbox}
-    \vskip6.5mm%
-
-    \ifdefined\beamer@SURFsara@logo
-        \hskip2.8cm\hfill\includegraphics[height=6.5mm]{\beamer@SURFsara@logo}\hfill\null
-    \else
-        \hskip2.8cm\hfill\includegraphics[height=6.5mm]{graphics/logos/SURF_SARA_fc.pdf}\hfill\null
-    \fi
 }
 
-\mode<all>
+\titlegraphic{\includegraphics[height=4ex]{graphics/logos/SURF_SARA_fc.pdf}}
+
+% Define where the element of the title page are placed
+\setbeamertemplate{title page}
+{
+    \vskip7ex%
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth]{title page header}
+        \usebeamerfont{title}\usebeamercolor{title}\color{fg}\inserttitle
+    \end{beamercolorbox}
+    \vskip.1ex%
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth]{subtitle page header}
+        \usebeamerfont{subtitle}\usebeamercolor{subtitle}\color{fg}\insertsubtitle
+    \end{beamercolorbox}
+    \vskip4ex
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth, left]{author}
+        \usebeamerfont{author}\usebeamercolor{author}\color{fg}\insertauthor
+    \end{beamercolorbox}
+    \vskip-.75ex
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth, left]{institute}
+        \usebeamerfont{institute}\usebeamercolor{institute}\color{fg}\insertinstitute
+    \end{beamercolorbox}
+    \vskip6.5ex
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth, center]{date}
+        \usebeamerfont{date}\usebeamercolor{date}\color{fg}\insertdate
+    \end{beamercolorbox}
+    \vskip-1ex
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth, center]{location}
+        \usebeamerfont{location}\usebeamercolor{location}\color{fg}\insertlocation
+    \end{beamercolorbox}
+    \vfill
+    \hspace{.2\paperwidth}%
+    \begin{beamercolorbox}[wd=.65\paperwidth, center]{logo}
+        \inserttitlegraphic
+    \end{beamercolorbox}
+}
+
+\mode
+<all>

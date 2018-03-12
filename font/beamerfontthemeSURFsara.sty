@@ -1,23 +1,58 @@
-\mode<presentation>
+\mode
+<presentation>
 
-\setbeamercolor*{author in head/foot}{fg=white}
-\setbeamercolor*{title in head/foot}{fg=white}
-\setbeamercolor*{date in head/foot}{fg=white}
+\usepackage{fontspec}
 
-\usepackage[default, osf]{sourcesanspro}
-\usepackage{sourcecodepro}
+\setsansfont{Source Sans Pro}[
+    ItalicFont     = *-Italic,
+    BoldFont       = *-Bold,
+    BoldItalicFont = *-BoldItalic,
+    FontFace       = {el}{n}{*-ExtraLight},
+    FontFace       = {el}{it}{*-ExtraLightItalic},
+    FontFace       = {lt}{n}{*-Light},
+    FontFace       = {lt}{it}{*-LightItalic},
+    FontFace       = {sb}{n}{*-SemiBold},
+    FontFace       = {sb}{it}{*-SemiBold Italic},
+    FontFace       = {bb}{n}{*-Black},
+    FontFace       = {bb}{it}{*-Black Italic}
+]
 
-\setbeamerfont{structure}{}
-\setbeamerfont{title}{size=\LARGE, series=\sourcesansprolight\bfseries\selectfont, parent=structure}
-\setbeamerfont{subtitle}{size=\large, series=\sourcesansprolight\selectfont, parent=structure}
+\DeclareRobustCommand\elseries{\fontseries{el}\selectfont}
+\DeclareTextFontCommand{\textel}{\elseries}
 
-\setbeamerfont{frametitle}{size=\Large, series=\sourcesansprolight\bfseries\selectfont}
-\setbeamerfont{framesubtitle}{size=\footnotesize, series=\sourcesansprolight\mdseries\selectfont}
+\DeclareRobustCommand\ltseries{\fontseries{lt}\selectfont}
+\DeclareTextFontCommand{\textlt}{\ltseries}
 
-\setbeamerfont{institute}{size=\footnotesize, series=\sourcesansproextreme\selectfont}
-\setbeamerfont{date}{size=\footnotesize, series=\sourcesansprolight\selectfont, parent=structure}
+\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+\DeclareTextFontCommand{\textsb}{\sbseries}
 
-\setbeamerfont{block title}{size=\normalsize, series=\sourcesanspro\selectfont}
-\setbeamerfont{block body}{size=\normalsize, series=\sourcesansprolight\selectfont}
+\DeclareRobustCommand\bbseries{\fontseries{bb}\selectfont}
+\DeclareTextFontCommand{\textbb}{\bbseries}
 
-\mode<all>
+\setmonofont{Source Code Pro}[
+    ItalicFont     = *-Italic,
+    BoldFont       = *-Bold,
+    BoldItalicFont = *-BoldItalic,
+    FontFace       = {el}{n}{*-ExtraLight},
+    FontFace       = {el}{it}{*-ExtraLightItalic},
+    FontFace       = {lt}{n}{*-Light},
+    FontFace       = {lt}{it}{*-LightItalic},
+    FontFace       = {sb}{n}{*-SemiBold},
+    FontFace       = {sb}{it}{*-SemiBold Italic},
+    FontFace       = {bb}{n}{*-Black},
+    FontFace       = {bb}{it}{*-Black Italic},
+    Scale = MatchLowercase
+]
+
+\setbeamerfont{title}{size=\LARGE, series=\sbseries}
+\setbeamerfont{subtitle}{size=\large, series=\ltseries}
+\setbeamerfont{author}{series=\normalfont}
+\setbeamerfont{institute}{size=\footnotesize, series=\ltseries}
+\setbeamerfont{date}{size=\footnotesize, series=\ltseries}
+\setbeamerfont{location}{size=\scriptsize, series=\ttfamily}
+
+\setbeamerfont{frametitle}{size=\Large, series=\sbseries}
+\setbeamerfont{framesubtitle}{size=\small, series=\ltseries}
+
+\mode
+<all>
