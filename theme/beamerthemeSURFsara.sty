@@ -1,8 +1,38 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthemeSURFsara}[2018/06/07 v0.9 SURFsara Beamer theme]
 
-% Settings
+\RequirePackage{pgfopts}
+
+
+\pgfkeys{/SURFsara/.cd,
+    .search also={
+        /SURFsara/inner,
+        /SURFsara/outer,
+        /SURFsara/color,
+        /SURFsara/font,
+    }
+}
+
+\pgfkeys{
+    /SURFsara/logo/.cd,
+    .is choice,
+    SURF/.code=\def\SURFsara@logolocation{logos/SURF_fc.pdf},
+    default/.code=\def\SURFsara@logolocation{logos/SURF_SARA_fc.pdf},
+    SURFsara/.code=\def\SURFsara@logolocation{logos/SURF_SARA_fc.pdf},
+}
+
+\newcommand{\SURFsara@setdefaults}{
+    \pgfkeys{/SURFsara/.cd,
+        logolocation=logos/SURF_SARA_fc.pdf,
+    }
+}
+
+% Settings`
 \usecolortheme{SURFsara}
 \usefonttheme{SURFsara}
 \useoutertheme{SURFsara}
 \useinnertheme{SURFsara}
+
+% \def\SURFsara@logolocation#1{#1}
+
+\ProcessPgfOptions{/SURFsara}
