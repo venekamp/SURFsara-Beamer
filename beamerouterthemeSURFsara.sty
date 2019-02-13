@@ -1,39 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeSURFsara}[2018/06/07 SURFsara beamer inner theme]
+
+\usepackage[absolute,overlay]{textpos}
+\RequirePackage{tikz}
+
 \mode
 <presentation>
 
-% location command
-\def\location{\@dblarg\beamer@location}
-\long\def\beamer@location[#1]#2{%
-    \def\beamer@temp{#2}%
-    \ifx\beamer@temp\@empty
-        \def\insertlocation{}
-    \else
-        \def\insertlocation{\def\inst{\beamer@instinst}\def\and{\beamer@andinst}#2}%
-    \fi
-    \def\beamer@shortlocation{#1}
-    \def\SURFsara@beamer@insertlocation{#2}}
-\location{}
-% end of location command
-
 \setbeamertemplate{navigation symbols}{}
 
-\defbeamertemplate*{footline}{infolines theme}
+\setbeamertemplate{background canvas}
 {
-    \leavevmode%
-    \hbox{%
-        \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1ex, center]{author in head/foot}%
-            \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1ex, center]{title in head/foot}%
-            \usebeamerfont{title in head/foot}\insertshorttitle
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1ex, right]{date in head/foot}%
-            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
-            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
-        \end{beamercolorbox}%
-    }%
-    \vskip0pt%
+   \begin{tikzpicture}
+		\fill[white!93!black, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+	\end{tikzpicture}
 }
+
+\setbeamertemplate{background}
+{
+   \begin{tikzpicture}
+		% Don't stray outside the paper dimensions.
+	   \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+		\ifnum\thepage=1\relax%
+			% Set a solid bar at the left side of the page
+			\fill[color=SURFsaraGreen] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
+		% \else
+		% 	% Set a solid bar at the top of the frame which holds the frame title
+		% 	\fill[color=SURFsaraGreen] (0, \the\paperheight - 8.15ex) rectangle(\the\paperwidth, \the\paperheight);
+		% 	% Set a solid bar at the bottom of the frame to mark the bottom of the page
+		% 	\fill[color=SURFsaraGreen] (0, 0) rectangle(\the\paperwidth, .67ex);
+		\fi
+	\end{tikzpicture}
+}
+
 
 \mode
 <all>
