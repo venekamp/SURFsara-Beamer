@@ -34,26 +34,29 @@
 
 \defbeamertemplate*{itemize item}{surfsara}
 {
-   \begin{tikzpicture}
-      \draw [draw=black, opacity=0] (0, -.25em) -- (0, 0);
-      \draw[line width=1mm, line cap=round](0, 0) -- (.33em, 0);
-   \end{tikzpicture}
+   \raise.2em\hbox{%
+      \begin{tikzpicture}
+         \draw[line width=1mm, line cap=round](0, 0) -- (.33em, 0);
+      \end{tikzpicture}
+   }
 }
 
 \defbeamertemplate*{itemize subitem}{surfsara}
 {
-   \begin{tikzpicture}
-      \draw [draw=black, opacity=0] (0, -.3em) -- (0, 0);
-      \draw[draw=orange, line width=1mm, line cap=round](0, 0) -- (.33em, 0);
-   \end{tikzpicture}
+   \raise.2em\hbox{%
+      \begin{tikzpicture}
+         \draw[draw=orange, line width=1mm, line cap=round](0, 0) -- (.33em, 0);
+      \end{tikzpicture}
+   }
 }
 
 \defbeamertemplate*{itemize subsubitem}{surfsara}
 {
-   \begin{tikzpicture}
-      \draw [draw=black, opacity=0] (0, -.33em) -- (0, 0);
-      \draw[draw=blue, line width=1mm, line cap=round](0, 0) -- (.33em, 0);
-   \end{tikzpicture}
+   \raise.2em\hbox{%
+      \begin{tikzpicture}
+         \draw[draw=blue, line width=1mm, line cap=round](0, 0) -- (.33em, 0);
+      \end{tikzpicture}
+   }
 }
 
 \setbeamercolor{bottomstopbar}{fg=black,bg=SURFsaraGreen}
