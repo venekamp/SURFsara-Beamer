@@ -1,6 +1,29 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthemeSURFsara}[2018/06/07 v0.9 SURFsara Beamer theme]
 
+\RequirePackage{xstring}
+\RequirePackage{pgfopts}
+
+\pgfkeys{
+   /surf/.cd,
+   variant/.is choice,
+   variant/surf/.code={
+      \wlog{beamerthemeSURFsara: selected surf variant.}
+      \def\surf@variant{surf}
+   },
+   variant/surfsara/.code={
+      \wlog{beamerthemeSURFsara: selected surfsara variant (default)}
+      \def\surf@variant{surfsara}
+   },
+   variant=surfsara,
+   variant/.unknown/.code=
+      \PackageWarning{beamerSURFsara}
+      {unknown variant value}
+      {surf and surfsara are only accepted as value}
+}
+
+\ProcessPgfOptions{/surf}
+
 % location command
 \def\location{\@dblarg\beamer@location}
 \long\def\beamer@location[#1]#2{%

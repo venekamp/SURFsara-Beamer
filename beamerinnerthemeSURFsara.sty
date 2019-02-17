@@ -1,4 +1,10 @@
-\titlegraphic{\includegraphics[height=4ex]{SURFsara_logo}}
+\IfStrEqCase{\surf@variant}%
+   {%
+      {surfsara}{\def\surf@logo{SURFsara_logo}}%
+      {surf}{\def\surf@logo{SURF_logo}}%
+   }
+
+\titlegraphic{\includegraphics[height=4ex]{\surf@logo}}
 
 % Define where the element of the title page are placed
 \setbeamertemplate{title page}
@@ -65,7 +71,7 @@
 {
    \hbox{%
       \begin{beamercolorbox}[wd=.05\paperwidth, ht=2.25ex, dp=1ex, center]{author in head/foot}%
-         \includegraphics[height=2.25ex]{SURFsara_logo}
+         \includegraphics[height=2.25ex]{\surf@logo}
       \end{beamercolorbox}%
       \begin{beamercolorbox}[wd=.283333\paperwidth, ht=2.25ex, dp=1ex, center]{author in head/foot}%
          \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}

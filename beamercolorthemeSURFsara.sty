@@ -1,12 +1,23 @@
 \mode
 <presentation>
 
-\definecolor{SURFsaraGreen}{HTML}{008741}
+\IfStrEqCase{\surf@variant}%
+   {%
+      {surfsara}{%
+         \definecolor{SURFsaraGreen}{HTML}{008741}
 
+         \colorlet{SURFitem}{SURFsaraGreen!80!white}
+         \definecolor{SURFsubItem}{HTML}{ff8839}
+         \definecolor{SURFsubsubItem}{HTML}{418dff}
+      }%
+      {surf}{%
+         \definecolor{SURFsaraGreen}{HTML}{ed6b06}
 
-\colorlet{SURFitem}{SURFsaraGreen!80!white}
-\definecolor{SURFsubItem}{HTML}{ff8839}
-\definecolor{SURFsubsubItem}{HTML}{418dff}
+         \colorlet{SURFitem}{SURFsaraGreen!80!white}
+         \definecolor{SURFsubItem}{HTML}{339f67}
+         \definecolor{SURFsubsubItem}{HTML}{418dff}
+      }%
+   }
 
 \setbeamercolor{title}{fg=black}
 \setbeamercolor{subtitle}{fg=black!60}
