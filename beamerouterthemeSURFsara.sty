@@ -18,7 +18,7 @@
          {Background of front cover has not been set yet. Please rerun}
       \else
    		\ifnum\thepage=\surf@frontcover\relax%
-            \fill[SURFsaraGreen, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+            \fill[PrimaryColor, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
          \fi
       \fi
 	\end{tikzpicture}
@@ -36,7 +36,7 @@
       \else
    		\ifnum\thepage=\surf@titlepagepage\relax%
 	   		% Set a solid bar at the left side of the page
-		   	\fill[color=SURFsaraGreen] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
+		   	\fill[color=PrimaryColor] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
          \fi
 		\fi
 	\end{tikzpicture}
@@ -81,7 +81,7 @@
    \end{textblock*}
 }
 
-\setbeamercolor{bottomstopbar}{fg=black,bg=SURFsaraGreen}
+\setbeamercolor{bottomstopbar}{fg=black,bg=PrimaryColor}
 
 \setbeamertemplate{footline}
 {
@@ -116,7 +116,7 @@
 
 \def\frontcover{\usebeamertemplate*{frontcover}}
 
-\setbeamercolor*{colorbox}{use=structure, fg=white, bg=SURFsaraGreen}
+\setbeamercolor*{colorbox}{use=structure, fg=white, bg=PrimaryColor}
 
 \defbeamertemplate*{backcover}{surfsara}{
    \begin{center}
