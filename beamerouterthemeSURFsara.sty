@@ -19,9 +19,15 @@
    \begin{tikzpicture}
 		% Don't stray outside the paper dimensions.
 	   \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
-		\ifnum\thepage=1\relax%
-			% Set a solid bar at the left side of the page
-			\fill[color=SURFsaraGreen] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
+      \ifx\surf@titlepagepage\undefined
+         \PackageWarning{BeamerSURFsara}
+         {title page page number undetermined yet. Please rerun}
+         {You need to rerun in order to get the title page number right}
+      \else
+   		\ifnum\thepage=\surf@titlepagepage\relax%
+	   		% Set a solid bar at the left side of the page
+		   	\fill[color=SURFsaraGreen] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
+         \fi
 		\fi
 	\end{tikzpicture}
 }
@@ -37,6 +43,7 @@
 % Define where the element of the title page are placed
 \setbeamertemplate{title page}
 {
+   \write\@auxout{\gdef\noexpand\surf@titlepagepage{\thepage}}
    \begin{textblock*}{.675\pagewidth}(.25\pagewidth, .275\pageheight)
       \begin{beamercolorbox}{title page header}
          \usebeamerfont{title}\usebeamercolor{title}\color{fg}\inserttitle
