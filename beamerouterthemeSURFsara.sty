@@ -11,6 +11,16 @@
 {
    \begin{tikzpicture}
 		\fill[white!93!black, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+
+      \ifx\surf@frontcover\undefined
+         \PackageWarning{BeamerSURFsara}
+         {Background of front cover has not been set yet. Please rerun}
+         {Background of front cover has not been set yet. Please rerun}
+      \else
+   		\ifnum\thepage=\surf@frontcover\relax%
+            \fill[SURFsaraGreen, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+         \fi
+      \fi
 	\end{tikzpicture}
 }
 
@@ -96,6 +106,15 @@
 }
 
 \addtobeamertemplate{frametitle}{}{\vspace*{1.5ex}}
+
+\defbeamertemplate*{frontcover}{surfsara}{
+   \write\@auxout{\gdef\noexpand\surf@frontcover{\thepage}}
+   \begin{center}
+      \includegraphics[scale=1.5]{\surf@logo}
+   \end{center}
+}
+
+\def\frontcover{\usebeamertemplate*{frontcover}}
 
 \setbeamertemplate{navigation symbols}{}
 
