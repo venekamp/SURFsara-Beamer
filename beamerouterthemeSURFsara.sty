@@ -116,6 +116,27 @@
 
 \def\frontcover{\usebeamertemplate*{frontcover}}
 
+\setbeamercolor*{colorbox}{use=structure, fg=white, bg=SURFsaraGreen}
+
+\defbeamertemplate*{backcover}{surfsara}{
+   \begin{center}
+      \includegraphics[scale=1.8]{SURF_logo}
+   \end{center}
+   \vspace{1cm}
+   \begin{center}
+      \includegraphics[scale=.6]{SURF_all_logos}
+   \end{center}
+   \begin{center}
+      \href{https://surf.nl}{\small\textsb{surf.nl}}
+   \end{center}
+   \vspace{.5cm}
+   \begin{center}
+      \includegraphics[scale=.2]{cc-by}
+   \end{center}
+}
+
+\def\backcover{\usebeamertemplate*{backcover}}
+
 \setbeamertemplate{navigation symbols}{}
 
 \mode
