@@ -11,36 +11,36 @@
 \setbeamertemplate{background canvas}
 {
    \begin{tikzpicture}
-		\fill[white!93!black, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+      \fill[white!93!black, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
 
       \ifx\surf@frontcover\undefined
          \PackageWarning{BeamerSURFsara}
          {Background of front cover has not been set yet. Please rerun}
          {Background of front cover has not been set yet. Please rerun}
       \else
-   		\ifnum\thepage=\surf@frontcover\relax%
+         \ifnum\thepage=\surf@frontcover\relax%
             \fill[PrimaryColor, opacity=1] (0, 0) rectangle(\the\paperwidth, \the\paperheight);
          \fi
       \fi
-	\end{tikzpicture}
+   \end{tikzpicture}
 }
 
 \setbeamertemplate{background}
 {
    \begin{tikzpicture}
-		% Don't stray outside the paper dimensions.
-	   \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+      % Don't stray outside the paper dimensions.
+      \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
       \ifx\surf@titlepagepage\undefined
          \PackageWarning{BeamerSURFsara}
          {title page page number undetermined yet. Please rerun}
          {You need to rerun in order to get the title page number right}
       \else
-   		\ifnum\thepage=\surf@titlepagepage\relax%
-	   		% Set a solid bar at the left side of the page
-		   	\fill[color=PrimaryColor] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
+         \ifnum\thepage=\surf@titlepagepage\relax%
+            % Set a solid bar at the left side of the page
+            \fill[color=PrimaryColor] (0, 0) rectangle(.175\paperwidth, \the\paperheight);
          \fi
-		\fi
-	\end{tikzpicture}
+      \fi
+   \end{tikzpicture}
 }
 
 \IfStrEqCase{\surf@variant}%
